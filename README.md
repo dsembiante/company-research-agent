@@ -1,4 +1,4 @@
-# Agentic Research Pipeline
+# Company Research Agent
 
 A production-aware AI agent that autonomously researches companies, validates structured output against a strict Pydantic schema, falls back intelligently across data sources, and logs full observability data for every run — all powered by a local LLM with no API key required.
 
