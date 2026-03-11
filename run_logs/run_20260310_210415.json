@@ -1,0 +1,77 @@
+{
+  "run_id": "20260310_210415",
+  "start_time": "2026-03-10T21:04:15.408128",
+  "end_time": "2026-03-10T21:04:16.953807",
+  "total_duration_seconds": 1.546,
+  "companies": [
+    {
+      "company_name": "Microsoft",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "error",
+      "validation_errors": [
+        "registry.ollama.ai/library/llama3:latest does not support tools (status code: 400)"
+      ],
+      "total_duration_seconds": 0.195,
+      "source_used": "unknown"
+    },
+    {
+      "company_name": "Apple",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "error",
+      "validation_errors": [
+        "registry.ollama.ai/library/llama3:latest does not support tools (status code: 400)"
+      ],
+      "total_duration_seconds": 0.18,
+      "source_used": "unknown"
+    },
+    {
+      "company_name": "Amazon",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "error",
+      "validation_errors": [
+        "registry.ollama.ai/library/llama3:latest does not support tools (status code: 400)"
+      ],
+      "total_duration_seconds": 0.174,
+      "source_used": "unknown"
+    },
+    {
+      "company_name": "Capital One",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "error",
+      "validation_errors": [
+        "registry.ollama.ai/library/llama3:latest does not support tools (status code: 400)"
+      ],
+      "total_duration_seconds": 0.157,
+      "source_used": "unknown"
+    },
+    {
+      "company_name": "JPMorgan Chase",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "error",
+      "validation_errors": [
+        "registry.ollama.ai/library/llama3:latest does not support tools (status code: 400)"
+      ],
+      "total_duration_seconds": 0.147,
+      "source_used": "unknown"
+    }
+  ],
+  "summary": {
+    "total_companies": 5,
+    "successful": 0,
+    "failed": 5,
+    "failed_companies": [
+      "Microsoft",
+      "Apple",
+      "Amazon",
+      "Capital One",
+      "JPMorgan Chase"
+    ],
+    "success_rate": 0.0,
+    "avg_duration_per_company": 0.171
+  }
+}

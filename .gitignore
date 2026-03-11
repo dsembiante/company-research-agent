@@ -7,8 +7,6 @@ __pycache__/
 *.pyo
 
 # Output and logs (optional - remove these lines if you want to track them)
-output/
-run_logs/
 
 # Environment variables
 .env

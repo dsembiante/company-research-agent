@@ -1,29 +1,41 @@
-Agentic Research Pipeline
+# Agentic Research Pipeline
+
 A production-aware AI agent that autonomously researches companies, validates structured output against a strict Pydantic schema, falls back intelligently across data sources, and logs full observability data for every run — all powered by a local LLM with no API key required.
-Background & Motivation
+
+## Background & Motivation
+
 I've spent 5 years building RPA and intelligent automation solutions, including production deployments at an enterprise financial institution. Traditional RPA bots are powerful for deterministic, structured workflows — but they break the moment something unexpected happens: a webpage layout changes, a search returns an ambiguous result, or the data doesn't match the expected format. A developer has to intervene every time.
+
 This project explores the practical difference between that approach and a modern AI agent architecture. Rather than building a brittle rule-based pipeline, the agent reasons about what to do when things go wrong — falling back to alternate data sources, self-correcting invalid output, and logging exactly what happened at each step. These are the properties that matter in real enterprise systems.
-How It Works
 
-Reads a list of companies from a CSV file
-For each company, a LangChain agent (powered by a local Llama 3.1 model via Ollama) searches Wikipedia first
-If Wikipedia returns a poor result — missing article, disambiguation page, or insufficient content — the agent automatically falls back to DuckDuckGo without any hardcoded logic telling it to do so
-Extracted data is validated against a strict Pydantic v2 schema with field-level constraints and custom validators
-If validation fails, the agent retries with a corrective prompt that includes the specific validation errors, allowing it to self-correct
-Every run produces a structured JSON report and a detailed observability log capturing tool call sequences, durations, retry counts, and success metrics
+## How It Works
 
-Key Technical Decisions
-Why Ollama instead of the OpenAI API?
+1. Reads a list of companies from a CSV file
+2. For each company, a LangChain agent (powered by a local Llama 3.1 model via Ollama) searches Wikipedia first
+3. If Wikipedia returns a poor result — missing article, disambiguation page, or insufficient content — the agent automatically falls back to DuckDuckGo without any hardcoded logic telling it to do so
+4. Extracted data is validated against a strict Pydantic v2 schema with field-level constraints and custom validators
+5. If validation fails, the agent retries with a corrective prompt that includes the specific validation errors, allowing it to self-correct
+6. Every run produces a structured JSON report and a detailed observability log capturing tool call sequences, durations, retry counts, and success metrics
+
+## Key Technical Decisions
+
+**Why Ollama instead of the OpenAI API?**
 Running the LLM locally eliminates API costs entirely, removes the need for credentials, and makes the project fully reproducible by anyone. For a portfolio project meant to demonstrate agentic architecture rather than model selection, this is the right tradeoff. Swapping to OpenAI or Anthropic requires changing one line.
-Why Pydantic v2 for output validation?
+
+**Why Pydantic v2 for output validation?**
 LLM output is non-deterministic. In production systems you cannot trust that a model will return well-formed, complete data every time. Pydantic enforces the schema at runtime, catches missing or malformed fields immediately, and gives the agent specific error messages to fix rather than silently writing bad data. This mirrors how production AI pipelines handle LLM output unreliability.
-Why separate observability logging?
+
+**Why separate observability logging?**
 In enterprise automation, auditability and debuggability are non-negotiable. The run log answers questions that are impossible to answer from the output file alone: which tool was called for each company, did any fallbacks trigger, how long did each step take, and what was the overall success rate? Building this in from the start rather than as an afterthought reflects how production systems are designed.
-Why decision-branching tools instead of a single search function?
-Giving the agent two separate tools — search_wikipedia and search_duckduckgo — and having Wikipedia return a found boolean forces the agent to reason about tool selection rather than follow a hardcoded sequence. This is the architectural difference between a script and an agent.
-Sample Output
-report.json
-json[
+
+**Why decision-branching tools instead of a single search function?**
+Giving the agent two separate tools — `search_wikipedia` and `search_duckduckgo` — and having Wikipedia return a `found` boolean forces the agent to reason about tool selection rather than follow a hardcoded sequence. This is the architectural difference between a script and an agent.
+
+## Sample Output
+
+### report.json
+```json
+[
   {
     "company_name": "Capital One",
     "summary": "Capital One Financial Corporation is an American bank holding company specializing in credit cards, auto loans, banking, and savings accounts, headquartered in McLean, Virginia...",
@@ -34,8 +46,11 @@ json[
     "confidence_score": 0.92
   }
 ]
-run_logs/run_YYYYMMDD_HHMMSS.json
-json{
+```
+
+### run_logs/run_YYYYMMDD_HHMMSS.json
+```json
+{
   "run_id": "20250310_143022",
   "start_time": "2025-03-10T14:30:22",
   "total_duration_seconds": 87.4,
@@ -47,38 +62,59 @@ json{
     "avg_duration_per_company": 17.48
   }
 }
-Tech Stack
+```
 
-LLM: Ollama running llama3.1 (local, no API key required)
-Agent Framework: LangChain with tool-calling agent
-Output Validation: Pydantic v2 with custom field validators
-Search: Wikipedia scraping + DuckDuckGo fallback via duckduckgo-search
-Observability: Custom structured run logger with per-company tool call tracking
-Data: Pandas (CSV input), JSON (structured output)
+## Tech Stack
 
-Setup
-Prerequisites
+- **LLM**: [Ollama](https://ollama.com/) running `llama3.1` (local, no API key required)
+- **Agent Framework**: LangChain with tool-calling agent
+- **Output Validation**: Pydantic v2 with custom field validators
+- **Search**: Wikipedia scraping + DuckDuckGo fallback via `duckduckgo-search`
+- **Observability**: Custom structured run logger with per-company tool call tracking
+- **Data**: Pandas (CSV input), JSON (structured output)
 
-Python 3.9+
-Ollama installed and running with the llama3.1 model
+## Setup
 
-bashollama pull llama3.1
-Install Dependencies
-bashpython -m venv venv
+### Prerequisites
+
+- Python 3.9+
+- [Ollama](https://ollama.com/) installed and running with the `llama3.1` model
+
+```bash
+ollama pull llama3.1
+```
+
+### Install Dependencies
+
+```bash
+python -m venv venv
 source venv/Scripts/activate  # Windows (Git Bash)
 # or
 source venv/bin/activate       # macOS/Linux
 
 pip install -r requirements.txt
-Add Your Companies
-Edit input/companies.csv with a company_name column:
-csvcompany_name
+```
+
+### Add Your Companies
+
+Edit `input/companies.csv` with a `company_name` column:
+
+```csv
+company_name
 Microsoft
 Apple
 Amazon
-Run
-bashpython main.py
-Project Structure
+```
+
+### Run
+
+```bash
+python main.py
+```
+
+## Project Structure
+
+```
 ai-agent-version/
 ├── main.py          # Entry point and pipeline orchestration
 ├── agent.py         # LangChain agent setup and validation logic
@@ -90,13 +126,16 @@ ai-agent-version/
 ├── output/
 │   └── report.json
 └── run_logs/
-What I Would Add Next
+```
 
-Streamlit UI — allow users to type a company name and see the validated result in a browser, deployable free on Streamlit Community Cloud
-Additional data sources — financial data APIs (e.g. Yahoo Finance) as a third tool, letting the agent decide when richer data is needed
-Agent memory — allow the agent to reference previously researched companies when writing consolidated summaries
-OpenAI/Anthropic toggle — a config flag to switch between local Ollama and a cloud API, making it easy to benchmark output quality vs cost tradeoffs
-Automated output evaluation — a lightweight scoring layer that rates each summary for completeness against a rubric, closing the loop on output quality
+## What I Would Add Next
 
-Author
+- **Streamlit UI** — allow users to type a company name and see the validated result in a browser, deployable free on Streamlit Community Cloud
+- **Additional data sources** — financial data APIs (e.g. Yahoo Finance) as a third tool, letting the agent decide when richer data is needed
+- **Agent memory** — allow the agent to reference previously researched companies when writing consolidated summaries
+- **OpenAI/Anthropic toggle** — a config flag to switch between local Ollama and a cloud API, making it easy to benchmark output quality vs cost tradeoffs
+- **Automated output evaluation** — a lightweight scoring layer that rates each summary for completeness against a rubric, closing the loop on output quality
+
+## Author
+
 Built as part of an ongoing AI engineering portfolio exploring the evolution from traditional RPA and intelligent automation toward modern agentic AI architectures.

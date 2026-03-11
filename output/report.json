@@ -1,0 +1,53 @@
+{
+  "companies": [
+    {
+      "company_name": "Microsoft",
+      "summary": "Microsoft Corporation is an American multinational technology conglomerate headquartered in Redmond, Washington. Founded in 1975, the company became influential in the rise of personal computers through software like Windows, and has since expanded to Internet services, cloud computing, artificial intelligence, video gaming, and other fields. Often described as a Big Tech company, Microsoft is the largest software company by revenue, one of the most valuable public companies,[a] and one of the most valuable brands globally. It is a part of Big Tech along with five other tech companies in the United States, Alphabet (Google), Amazon, Apple, Meta (Facebook), and Nvidia, which are also the largest companies in the world by market capitalization.[2][3][4]",
+      "industry": "Technology",
+      "founded_year": 1975,
+      "headquarters": "Redmond, Washington",
+      "source_used": "wikipedia",
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Apple",
+      "summary": "An apple is the round, edible fruit of an apple tree (Malus spp.). Fruit trees of the orchard or domestic apple (Malus domestica), the most widely grown in the genus, are cultivated worldwide. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found. Apples have been grown for thousands of years in Eurasia before they were introduced to North America by European colonists. Apples have cultural significance in many mythologies (including Norse and Greek) and religions (such as Christianity in Europe).",
+      "industry": "null",
+      "founded_year": 1976,
+      "headquarters": "Cupertino, California",
+      "source_used": "wikipedia",
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Apple",
+      "summary": "An apple is the round, edible fruit of an apple tree (Malus spp.). Fruit trees of the orchard or domestic apple (Malus domestica), the most widely grown in the genus, are cultivated worldwide. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found. Apples have been grown for thousands of years in Eurasia before they were introduced to North America by European colonists. Apples have cultural significance in many mythologies (including Norse and Greek) and religions (such as Christianity in Europe).",
+      "industry": "null",
+      "founded_year": 1976,
+      "headquarters": "Cupertino, California",
+      "source_used": "wikipedia",
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Capital One",
+      "summary": "Capital One Financial Corporation is an American bank holding company founded on July 21, 1994, and specializing in credit cards, auto loans, banking, and savings accounts, headquartered in Tysons, Virginia, with operations primarily in the United States.[2] It is the sixth-largest bank in the United States by total assets as of June\u00a030, 2025[update],[3] the third-largest issuer of Visa and Mastercard credit cards, and one of the largest car finance companies in the United States.",
+      "industry": "Banking",
+      "founded_year": 1994,
+      "headquarters": "Tysons, Virginia",
+      "source_used": "wikipedia",
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "JPMorgan Chase",
+      "summary": "JPMorgan Chase & Co. (stylized as JPMorganChase) is an American multinational banking institution headquartered in New York City and incorporated in Delaware. It is the largest bank in the United States, and the world's largest bank by market capitalization as of 2025.[3][4] As the largest of the Big Four banks in America, the firm is considered systemically important by the Financial Stability Board. Its size and scale have often led to enhanced regulatory oversight as well as the development of an internal \"Fortress Balance Sheet\".[5][6] The firm has had its global headquarters on 270 Park Avenue in Midtown Manhattan since 2025.[7]",
+      "industry": "Banking",
+      "founded_year": 1877,
+      "headquarters": "New York City",
+      "source_used": "wikipedia",
+      "confidence_score": 1.0
+    }
+  ],
+  "total_processed": 5,
+  "successful": 5,
+  "failed": 0,
+  "failed_companies": []
+}

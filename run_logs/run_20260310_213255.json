@@ -1,0 +1,61 @@
+{
+  "run_id": "20260310_213255",
+  "start_time": "2026-03-10T21:32:55.997504",
+  "end_time": "2026-03-10T21:44:15.552959",
+  "total_duration_seconds": 679.555,
+  "companies": [
+    {
+      "company_name": "Microsoft",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "passed",
+      "validation_errors": [],
+      "total_duration_seconds": 194.011,
+      "source_used": "SourceType.WIKIPEDIA"
+    },
+    {
+      "company_name": "Apple",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "passed",
+      "validation_errors": [],
+      "total_duration_seconds": 137.853,
+      "source_used": "SourceType.WIKIPEDIA"
+    },
+    {
+      "company_name": "Amazon",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "passed",
+      "validation_errors": [],
+      "total_duration_seconds": 63.598,
+      "source_used": "SourceType.WIKIPEDIA"
+    },
+    {
+      "company_name": "Capital One",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "passed",
+      "validation_errors": [],
+      "total_duration_seconds": 126.837,
+      "source_used": "SourceType.WIKIPEDIA"
+    },
+    {
+      "company_name": "JPMorgan Chase",
+      "tool_calls": [],
+      "retries": 0,
+      "validation_status": "passed",
+      "validation_errors": [],
+      "total_duration_seconds": 156.543,
+      "source_used": "SourceType.WIKIPEDIA"
+    }
+  ],
+  "summary": {
+    "total_companies": 5,
+    "successful": 5,
+    "failed": 0,
+    "failed_companies": [],
+    "success_rate": 1.0,
+    "avg_duration_per_company": 135.768
+  }
+}
