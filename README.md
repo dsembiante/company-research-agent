@@ -136,4 +136,10 @@ ai-agent-version/
 
 ## Author
 
+Dominic Sembiante
+
+LinkedIn: www.linkedin.com/in/dominic-sembiante-92b598149
+
+GitHub: github.com/dsembiante
+
 Built as part of an ongoing AI engineering portfolio exploring the evolution from traditional RPA and intelligent automation toward modern agentic AI architectures.
