@@ -17,7 +17,7 @@ I've spent 6 years building RPA and intelligent automation solutions across fina
 
 ## Key Technical Decisions
 
-**Why Ollama instead of the OpenAI API?**
+**Why Ollama instead of the OpenAI or Anthropic API?**
 Running the LLM locally eliminates API costs entirely, removes the need for credentials, and makes the project fully reproducible by anyone. For a portfolio project meant to demonstrate agentic architecture rather than model selection, this is the right tradeoff. Swapping to OpenAI or Anthropic requires changing one line.
 
 **Why Pydantic v2 for output validation?**
