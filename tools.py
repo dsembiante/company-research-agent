@@ -47,13 +47,20 @@ def search_wikipedia(company_name: str) -> dict:
            'may refer to' in soup.get_text()[:500]:
             return {"found": False, "summary": "disambiguation page", "url": url}
 
-        # Find the first paragraph with meaningful content (more than 150 characters)
+        # Collect all paragraphs with meaningful content (more than 50 characters)
+        paragraphs = []
         for para in soup.find_all('p'):
             text = para.get_text().strip()
-            if len(text) > 150:
-                return {"found": True, "summary": text, "url": url}
+            if len(text) > 50:
+                paragraphs.append(text)
 
-        # If no substantial paragraph was found, report not found
+        # Combine up to 8 paragraphs into one text block so the agent can
+        # extract fields that may be spread across different paragraphs
+        combined = " ".join(paragraphs[:8])
+        if combined:
+            return {"found": True, "summary": combined, "url": url}
+
+        # If no substantial paragraphs were found, report not found
         return {"found": False, "summary": "no substantial paragraph found", "url": url}
 
     except Exception as e:
